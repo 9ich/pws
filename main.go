@@ -36,12 +36,23 @@ var Magic = []byte{'p', 'w', 's', '2'}
 
 var stdin = bufio.NewReader(os.Stdin)
 
+func usage() {
+	fmt.Println("usage: pws [ -f file ] [ a | del | p ]\n")
+}
+
 func main() {
 	log.SetFlags(0)
 	log.SetPrefix("pws: ")
 
 	path := flag.String("f", "", "path to password store file")
+	help := flag.Bool("h", false, "show this message")
 	flag.Parse()
+
+	if *help {
+		usage()
+		flag.PrintDefaults()
+		return
+	}
 
 	if *path == "" {
 		u, err := user.Current()
@@ -67,6 +78,10 @@ func main() {
 	case "a":
 		addEntry(*path)
 	case "del":
+		if flag.NArg() != 2 {
+			usage()
+			return
+		}
 		delEntry(*path, flag.Arg(1), flag.Arg(2))
 	case "p":
 		setMaster(*path)
