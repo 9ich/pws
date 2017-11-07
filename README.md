@@ -12,20 +12,20 @@ Pws maintains an encrypted database of passwords. When invoked with no arguments
 If no database file already exists, pws prompts for a new master password and uses that to initialize one.
 
 ## OPTIONS
-**-f** *FILE*
+**-f** *FILE*  
 Specify the path to the database file. The default path is ".pws" under the user's home directory.
 
 ## COMMANDS
-**a**
+**a**  
 Interactively add a new database entry, or edit the entry with the given server+username combination if it already exists. Spaces are allowed in all fields.
 
-**del** *SERVER* *USERNAME*
+**del** *SERVER* *USERNAME*  
 Delete the entry for the given *SERVER*-*USERNAME* pair.
 
-**p**
+**p**  
 Change the master password.
 
-##IMPLEMENTATION
+## IMPLEMENTATION
 The database file has the following layout:
 
 	(4 bytes)       magic ("pws2")
