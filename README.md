@@ -11,6 +11,8 @@ Pws maintains an encrypted database of passwords. When invoked with no arguments
 
 If no database file already exists, pws prompts for a new master password and uses that to initialize one.
 
+You should probably just use gpg.
+
 ## OPTIONS
 **-f** *FILE*  
 Specify the path to the database file. The default path is ".pws" under the user's home directory.
